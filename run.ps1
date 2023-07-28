@@ -47,7 +47,7 @@ foreach ($app in $software) {
 
 #install vscode extensions
 if (Get-Command code -ErrorAction SilentlyContinue) {
-    $vscodeextensions = Get-Content vscodeextensions.txt
+    $vscodeextensions = Get-Content vscode_extensions.txt
     foreach ($extension in $vscodeextensions) {
         code --install-extension $extension
     }
