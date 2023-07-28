@@ -2,7 +2,6 @@ blender
 discord
 Everything
 ffmpeg
-git
 GoogleChrome
 lghub
 mongodb-shell
