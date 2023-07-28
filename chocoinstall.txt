@@ -1,6 +1,5 @@
 blender
 discord
-dotnetfx
 Everything
 ffmpeg
 git
@@ -11,7 +10,6 @@ nmap
 nodejs-lts
 obsidian
 obs-studio
-obs-studio.install
 openvpn-connect
 packer
 parsec
@@ -21,10 +19,6 @@ steam
 terraform
 telegram
 tor-browser
-vcredist140
-vcredist2008
-vcredist2015
-vcredist2017
 vlc
 vscode
 Wget
