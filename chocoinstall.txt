@@ -1,4 +1,6 @@
+bitwarden
 discord
+epicgameslauncher
 Everything
 ffmpeg
 GoogleChrome
