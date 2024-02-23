@@ -56,7 +56,6 @@ if (Get-Command code -ErrorAction SilentlyContinue) {
     $isanyerror = $true
 }
 
-
 if ($isanyerror -eq $true) {
     LogWrite "👎There are some errors"
     Write-Host "There are some errors"
