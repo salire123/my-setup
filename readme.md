@@ -1,63 +1,53 @@
+markdown
+# PowerShell Scripts for Environment Backup and Restoration
 
-## Prerequisites
+This repository contains two PowerShell scripts that are used for backing up and restoring a development environment on Windows. The `export.ps1` script is used to export configurations and settings, while the `run.ps1` script is used to install necessary tools and import settings.
 
-Before proceeding, make sure you have administrative access to your PC and that you are comfortable executing scripts and commands that alter your system configuration.
+## export.ps1
 
-### Step 1: Set Execution Policy for PowerShell Scripts
+The `export.ps1` script is responsible for exporting the following items:
 
-PowerShell's execution policy is a safety feature that controls the conditions under which PowerShell loads configuration files and runs scripts. This step is crucial to allow our setup script to run without any restrictions.
+- Chocolatey packages to a configuration file.
+- Visual Studio Code extensions to a text file.
+- Visual Studio Code settings and keybindings to JSON files.
 
-1. Open PowerShell as an Administrator. You can do this by typing "PowerShell" into the Start menu, right-clicking on Windows PowerShell, and selecting "Run as Administrator".
-2. Enter the following command:
+### Usage
 
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned
-   ```
+To use the `export.ps1` script, simply run it from a PowerShell prompt:
 
-3. You will be prompted to confirm the change. Press `Y` and then `Enter` to confirm.
+```powershell
+.\export.ps1
+````
 
-This sets the policy to allow scripts to run that have been downloaded from the Internet with a trusted signature.
+This will create a `config-save` directory with the exported files.
 
-### Step 2: Install Git
+## run.ps1
 
-Git is a distributed version control system that is essential for tracking changes in source code during software development.
+The `run.ps1` script performs the following actions:
 
-1. Still in the Administrator PowerShell window, install Git using the Windows package manager `winget` with the following command:
+- Checks if the script is running with administrator privileges.
+- Installs Chocolatey if it is not already installed.
+- Installs packages from a Chocolatey configuration file.
+- Updates the system's environment PATH variable.
+- Installs Visual Studio Code extensions from a list.
+- Uploads Visual Studio Code settings from a JSON file.
 
-   ```powershell
-   winget install git
-   ```
+### Usage
 
-2. Follow any on-screen prompts to complete the installation process.
+Before running the `run.ps1` script, make sure to run PowerShell as an administrator. Then execute the script:
 
-Make sure your `winget` command line tool is up-to-date before running this command.
+```powershell
+.\run.ps1
+```
 
-### Step 3: Clone the Setup Repository
+The script will log its actions to a `log` directory, creating an `install.log` file with timestamps for each logged event.
 
-Before running the setup script, you need to clone the repository containing the `run.ps1` script.
+## Notes
 
-1. Still in the Administrator PowerShell window, enter the following command:
+- Ensure that you have the necessary permissions to execute scripts on your system.
+- It is recommended to review the scripts and understand the actions they perform before running them.
+- Always back up your current configurations before running the `run.ps1` script to avoid accidental loss of data.
 
-   ```powershell
-   git clone https://github.com/salire123/my-setup.git
-   ```
+## Contributing
 
-2. Navigate to the newly created directory, which contains the `run.ps1` script:
-
-   ```powershell
-   cd my-setup
-   ```
-
-### Step 4: Run the Setup Script
-
-Finally, we will execute the custom setup script named `run.ps1`. Ensure that the `run.ps1` file is in your current directory.
-
-1. In the Administrator PowerShell window, ensure you are in the directory where `run.ps1` is located.
-2. Execute the script with the following command:
-
-   ```powershell
-   .\run.ps1
-   ```
-
-Continue with any additional instructions provided by the script.
-
+If you would like to contribute to these scripts or suggest improvements, please feel free to open an issue or submit a pull request.

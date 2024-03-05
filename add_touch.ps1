@@ -1,20 +1,26 @@
-# This PowerShell script copies a specified .ps1 file to the System32 directory
+function ADD-My-ScriptDirectory {
+    param ([string]$scriptsDirectory)
+    # Define the destination directory in System32
+    $destinationDirectory = "C:\Windows\System32"
 
-# Define the path to your script
-$scriptPath = "D:\disk2main\mycode\my-setup\touch.cmd"
-
-# Define the destination path in System32
-$destination = "C:\Windows\System32\touch.cmd"
-
-# Check if the script exists
-if (Test-Path $scriptPath) {
-    # Copy the script to System32
-    try {
-        Copy-Item -Path $scriptPath -Destination $destination -Force
-        Write-Host "Script copied successfully to $destination"
-    } catch {
-        Write-Error "An error occurred: $_"
+    # Check if the directory exists
+    if (Test-Path $scriptsDirectory) {
+        # Get all .cmd files in the directory
+        $cmdFiles = Get-ChildItem -Path $scriptsDirectory -Filter "*.cmd"
+        foreach ($file in $cmdFiles) {
+            $destination = Join-Path -Path $destinationDirectory -ChildPath $file.Name
+            try {
+                # Copy the .cmd file to System32
+                Copy-Item -Path $file.FullName -Destination $destination -Force
+                Write-Host "Script $($file.Name) copied successfully to $destination"
+            } catch {
+                Write-Error "An error occurred copying $($file.Name): $_"
+            }
+        }
+    } else {
+        Write-Error "The directory $scriptsDirectory does not exist."
     }
-} else {
-    Write-Error "The script at $scriptPath does not exist."
 }
+
+# Call the function with the path to the directory containing the .cmd files
+ADD-My-ScriptDirectory -scriptsDirectory "D:\disk2main\mycode\my-setup\cmd"

@@ -1,0 +1,18 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "markdown.marp.exportType": "pptx",
+    "explorer.confirmDragAndDrop": false,
+    "redhat.telemetry.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": "true",
+        "scminput": false,
+        ".mdx": "true"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "github.copilot.editor.enableAutoCompletions": false,
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.iconTheme": "material-icon-theme"
+}
